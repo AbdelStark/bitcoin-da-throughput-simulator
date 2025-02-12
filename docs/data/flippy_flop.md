@@ -13,7 +13,6 @@ Block number: `855789`
 Previous L1 State Update Transaction: <https://etherscan.io/tx/0x958534acce062554754e61e4c8451983d8d8e606a16882c6c0eecc39c2ff6aea>
 Block number: `855777`
 
-
 ```bash
 ./scripts/count_txs_over_block_range_starknet.sh 855777 855789
 ```
@@ -34,5 +33,6 @@ Transactions per second: 270.32
 {"total_txs": 13516, "time_range": 50, "tps": 270.32}
 ```
 
+Total data used: `3 * 128kb = 384kb`
 
-
+TPS: `270.32`
