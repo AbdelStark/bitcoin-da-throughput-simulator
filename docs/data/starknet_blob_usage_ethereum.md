@@ -2,10 +2,33 @@
 
 Starknet Core contract address: `0xc662c410C0ECf747543f5bA90660f6ABeBD9C8c4`
 
-Update State 1: [Transaction](https://etherscan.io/tx/0x2f666f57e8f28b1c0c479a9d078b774e41c368de09430165e44de04f2bf870ed) - [Blob]()
+Get update state transactions: <https://etherscan.io/address/0xc662c410c0ecf747543f5ba90660f6abebd9c8c4>
 
-Update State 2: [Transaction](https://etherscan.io/tx/0x841e031cc3297fa08c4f92029dff739ca1c1d689ef133d11dcc202958907a7e6) - [Blob]()
+## Methodology:
 
-Update State 3: [Transaction](https://etherscan.io/tx/0x82d2850e9279ca9a293d7017130a54ee7e362ca3c8e5f5ec937b4ad9d691a1ba) - [Blob]()
+- Get an update state transaction
+- Get the blob count (e.g 6), retrieve the block number in the `LogStateUpdate` event
+- Get the block number of the previous update state transaction
+- You know have the range of blocks corresponding to this update state
+- Total number of data for this update state is blob count * 128kb
+- Query the Starknet blocks to count the total number of transactions in this range
+- Compute the difference between the timestamp of the block number of the current update state and the previous update state
+- Compute the total number of transactions divided by the time range to get the transactions per second over the period
+- You can then map a TPS to the total number of data for this update state
 
+To translate this to what TPS we could get on Bitcoin, we can proceed as follows:
+
+- Get the max data that can be stored in a Bitcoin block
+
+## Example
+
+Update state N: <https://etherscan.io/tx/0x10a601c06bfe00f8c0bef451ba917bc98822182d9ab6d148045bb9551089ef79>
+`blockNumber` in `LogStateUpdate` event: `1145357`
+
+Update state N-1: <https://etherscan.io/tx/0x873d6d8fe44f409f0691f9eb00e257ff0d80837e9660bb34b816ce6e8921b136>
+`blockNumber` in `LogStateUpdate` event: `1144907`
+
+Blob count: `5`
+
+Total data: `5 * 128kb = 640kb`
 
