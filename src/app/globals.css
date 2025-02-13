@@ -1,0 +1,150 @@
+@import "nes.css/css/nes.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* You can define your brand colors here if using Tailwind or custom CSS variables */
+  --pixel-font: "Press Start 2P", monospace;
+  --color-bg: #000000;
+  --color-fg: #ffffff;
+  --color-accent: #f7931a; /* Bitcoin orange */
+  --color-accent2: #00ffff; /* neon cyan */
+  --color-error: #ff3131; /* bright red */
+  --color-success: #39ff14; /* neon green */
+  --color-panel-bg: #1a1a1a; /* dark gray for panels */
+  --color-shadow: #222222;
+}
+
+/* Override body to use our custom retro theme */
+body {
+  font-family: var(--pixel-font);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  margin: 0; /* remove default margin */
+  /* Force pixelated rendering for images and canvas (Chrome-specific) */
+  image-rendering: pixelated;
+}
+
+/* Example styling for headings in big pixel style */
+h1,
+h2,
+h3 {
+  font-family: var(--pixel-font);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Make NES.css .nes-container a bit more neon or glowy, optional */
+.nes-container.is-dark {
+  background-color: var(--color-panel-bg);
+  color: var(--color-fg);
+  border-color: var(--color-accent);
+}
+
+/* If you want to style the NES.css button with your neon accent, override. 
+   Example: .is-primary uses Bitcoin orange, .is-success uses neon green, etc. */
+.nes-btn.is-primary {
+  background-color: var(--color-accent);
+  color: #000;
+  border-color: #fff;
+}
+.nes-btn.is-primary:hover {
+  filter: brightness(1.1);
+}
+.nes-btn.is-error {
+  background-color: var(--color-error);
+  color: #fff;
+}
+
+/* Pixelated slider override example (range inputs) */
+.pixel-slider {
+  width: 100%;
+  appearance: none;
+  height: 8px;
+  background: #444;
+  outline: none;
+  margin: 8px 0;
+}
+/* The filled portion of the slider track */
+.pixel-slider::-webkit-slider-runnable-track {
+  height: 8px;
+  background: linear-gradient(
+    to right,
+    var(--color-accent2),
+    #444
+  ); /* example fill */
+}
+.pixel-slider::-moz-range-track {
+  height: 8px;
+  background: linear-gradient(to right, var(--color-accent2), #444);
+}
+/* The slider thumb (handle) in a pixel style */
+.pixel-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--color-accent);
+  border: 2px solid #fff;
+  cursor: pointer;
+  margin-top: -4px; /* center it on track */
+}
+.pixel-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--color-accent);
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+
+/* A simple container or panel style for the left controls column */
+.sim-controls-panel {
+  padding: 1rem;
+  margin: 1rem;
+  border: 2px solid var(--color-accent2);
+  box-shadow: 4px 4px 0 var(--color-shadow);
+}
+
+/* Right panel or container for the results */
+.sim-results-panel {
+  padding: 1rem;
+  margin: 1rem;
+  border: 2px solid var(--color-accent2);
+  box-shadow: 4px 4px 0 var(--color-shadow);
+}
+
+/* Example 2-column layout for desktop */
+.main-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr; /* left panel fixed-ish, right flexible */
+  gap: 1rem;
+}
+
+/* Basic chart container for a consistent size (responsive) */
+.chart-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* or however wide you prefer */
+  margin-top: 1rem;
+}
+
+/* A custom .pixel-input to style text inputs in a consistent retro way */
+.pixel-input {
+  background: #111;
+  border: 2px solid #fff;
+  color: #0f0;
+  padding: 4px;
+  font-family: var(--pixel-font);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Hover/focus states for the input */
+.pixel-input:focus {
+  outline: none;
+  border-color: var(--color-accent2);
+}
+
+/* Additional classes can be added as needed */
