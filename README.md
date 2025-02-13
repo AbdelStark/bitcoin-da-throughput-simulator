@@ -153,6 +153,12 @@ where:
 
 ---
 
+## Notes
+
+- Some unrealistic assumptions were made here (i.e 100% Bitcoin block space used, direct equivalence mapping between blob data size and actual state diff data size, topology of the transactions, etc.)
+- The test scenario was taken for a stress test campaign on Starknet's mainnet and is a pretty favorable case here, because most of the transactions were concentrated in few smart contracts during this period. When using state diffs model, it's a favorable case.
+- The idea here is more a thought experiment and to explore the design space of using Bitcoin as a DA layer for Starknet, in case the possibility to expand and settle on Bitcoin (in addition to Ethereum) becomes a viable option.
+
 ## Conclusion
 
 Using **Bitcoin** as a data availability layer for Starknet, under these assumptions, yields a theoretical maximum of around **235 transactions per second**. This is based on:
